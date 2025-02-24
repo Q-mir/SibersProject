@@ -23,6 +23,7 @@ namespace SibersProject.Pages.Employee
             var list = _employeesAll.Execute(new All());
             AllEmployees = list.Select(row => new EmployeeDTO() 
                                                 { 
+                                                    EmployeeId = row.EmployeeId,
                                                     Email = row.Email,
                                                     FirstName = row.FirstName,
                                                     LastName = row.LastName,

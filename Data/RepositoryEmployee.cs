@@ -35,15 +35,16 @@ namespace Data
 
         public bool Check(string email) => _connection.Employees.Any(e => e.Email.ToLower() == email.ToLower());
         public List<EmployeeDTO> GetAll() => _connection.Employees.Select(e => Convert(e)).ToList();
-        
-        private static EmployeeDTO? Convert(Employee obj)
-                       => obj == null ? null : new EmployeeDTO()
-                                               {
-                                                   FirstName = obj.FirstName,
-                                                   LastName = obj.LastName,
-                                                   MiddleName = obj.MiddleName,
-                                                   Email = obj.Email
-                                               };
+
+        private static EmployeeDTO? Convert(Employee obj) => obj == null ? null : 
+            new EmployeeDTO()
+            {
+                EmployeeId = obj.EmployeeId,
+                FirstName = obj.FirstName,
+                LastName = obj.LastName,
+                MiddleName = obj.MiddleName,
+                Email = obj.Email
+            };
         public EmployeeDTO GetById(int id)
         {
             var employee = _connection.Employees.FirstOrDefault(e => e.EmployeeId == id);
