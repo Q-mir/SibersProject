@@ -5,26 +5,42 @@
     ViewData["Title"] = "Добавление проекта"; 
 }
 
-@* <form method="post" asp-page="/project/addproject">
+<form method="post" asp-page="/project/addproject">
      <div>
-        <span asp-validation-for="@Model.Input.Name"></span>
-        <label asp-for="@Model.Input.Name"></label>
-        <input asp-for="@Model.Input.Name">
+        <span asp-validation-for="@Model.ProjectInput.ProjectName"></span>
+        <label asp-for="@Model.ProjectInput.ProjectName"></label>
+        <input asp-for="@Model.ProjectInput.ProjectName">
     </div>
     <div>
-        <span asp-validation-for="@Model.Input.Password"></span>
-        <label asp-for="@Model.Input.Password"></label>
-        <input asp-for="@Model.Input.Password">
+        <span asp-validation-for="@Model.ProjectInput.CustomerCompany"></span>
+        <label asp-for="@Model.ProjectInput.CustomerCompany"></label>
+        <input asp-for="@Model.ProjectInput.CustomerCompany">
     </div>
     <div>
-        <span asp-validation-for="@Model.Input.PasswordAgain"></span>
-        <label asp-for="@Model.Input.PasswordAgain"></label>
-        <input asp-for="@Model.Input.PasswordAgain">
+        <span asp-validation-for="@Model.ProjectInput.ExecutorCompany"></span>
+        <label asp-for="@Model.ProjectInput.ExecutorCompany"></label>
+        <input asp-for="@Model.ProjectInput.ExecutorCompany">
     </div>
     <div>
-        <span asp-validation-for="@Model.Input.Country"></span>
-        <label asp-for="@Model.Input.Country"></label>
-        <select asp-items="@Model.SelectCountry" asp-for="@Model.Input.Country"></select>
+        <span asp-validation-for="@Model.ProjectInput.StartDate"></span>
+        <label asp-for="@Model.ProjectInput.StartDate"></label>
+        <input asp-for="@Model.ProjectInput.StartDate" />
     </div>
+    <div>
+        <span asp-validation-for="@Model.ProjectInput.EndDate"></span>
+        <label asp-for="@Model.ProjectInput.EndDate"></label>
+        <input asp-for="@Model.ProjectInput.EndDate" />
+    </div>
+    <div>
+        <span asp-validation-for="@Model.ProjectInput.Priority"></span>
+        <label asp-for="@Model.ProjectInput.Priority"></label>
+        <input asp-for="@Model.ProjectInput.Priority" />
+    </div>
+    <div>
+        <span asp-validation-for="@Model.ProjectInput.ProjectManagerId"></span>
+        <label asp-for="@Model.ProjectInput.ProjectManagerId"></label>
+        <input asp-for="@Model.ProjectInput.ProjectManagerId" />
+    </div>
+
     <input type="submit" value="Добавить" /> 
-</form> *@
+</form>

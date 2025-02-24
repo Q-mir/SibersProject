@@ -22,20 +22,19 @@ namespace Data
 
         public void Add(ProjectDTO obj)
         {
-            if (Check(obj.ProjectName))
+            
+            _connection.Projects.Add(new Project()
             {
-                _connection.Projects.Add(new Project()
-                {
-                    ProjectName = obj.ProjectName,
-                    CustomerCompany = obj.CustomerCompany,
-                    ExecutorCompany = obj.ExecutorCompany,
-                    StartDate = obj.StartDate,
-                    EndDate = obj.EndDate,
-                    Priority = obj.Priority,
-                    ProjectManagerId = obj.ProjectManagerId
-                });
-                _connection.SaveChanges();
-            }
+                ProjectName = obj.ProjectName,
+                CustomerCompany = obj.CustomerCompany,
+                ExecutorCompany = obj.ExecutorCompany,
+                StartDate = obj.StartDate,
+                EndDate = obj.EndDate,
+                Priority = obj.Priority,
+                ProjectManagerId = obj.ProjectManagerId
+            });
+            _connection.SaveChanges();
+            
         }
 
         public bool Check(string key) => _connection.Projects.Any(p => p.ProjectName == key);
@@ -44,7 +43,8 @@ namespace Data
 
         public ProjectDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var project = _connection.Projects.FirstOrDefault(p => p.ProjectId == id);
+            return project == null ? null : Convert(project);
         }
 
         private static ProjectDTO? Convert(Project obj)

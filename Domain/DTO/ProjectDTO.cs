@@ -23,13 +23,13 @@ public class ProjectDTO
     [MaxLength(255, ErrorMessage = "Длинна макс 255 символов")]
     public string ExecutorCompany { get; set; }
 
-    [Display(Name = "Компания - исполнитель:")]
-    
+    [Display(Name = "Дата начала проекта:")]
     public DateTime StartDate { get; set; }
 
+    [Display(Name = "Дата окончания проекта:")]
     public DateTime EndDate { get; set; }
 
-    [Display(Name = "Приоритет:")]
+    [Display(Name = "Приоритет (1-5):")]
     [Range(1, 5, ErrorMessage = "Приоритет от 1 до 5")]
     public int Priority { get; set; }
 

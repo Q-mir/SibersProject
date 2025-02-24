@@ -21,18 +21,16 @@ namespace Data
 
         public void Add(EmployeeDTO obj)
         {
-            if (!Check(obj.Email))
+            Employee employee = new Employee()
             {
-                Employee employee = new Employee()
-                {
-                    FirstName = obj.FirstName,
-                    LastName = obj.LastName,
-                    MiddleName = obj.MiddleName,
-                    Email = obj.Email
-                };
-                _connection.Add(employee);
-                _connection.SaveChanges();
-            }
+                FirstName = obj.FirstName,
+                LastName = obj.LastName,
+                MiddleName = obj.MiddleName,
+                Email = obj.Email
+            };
+            _connection.Add(employee);
+            _connection.SaveChanges();
+            
         }
 
         public bool Check(string email) => _connection.Employees.Any(e => e.Email.ToLower() == email.ToLower());
@@ -48,8 +46,8 @@ namespace Data
                                                };
         public EmployeeDTO GetById(int id)
         {
-            var client = _connection.Employees.FirstOrDefault(e => e.EmployeeId == id);
-            return client == null ? null : Convert(client);
+            var employee = _connection.Employees.FirstOrDefault(e => e.EmployeeId == id);
+            return employee == null ? null : Convert(employee);
         }
 
 

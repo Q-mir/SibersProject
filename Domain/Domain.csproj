@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Service\Services.csproj" />
+  </ItemGroup>
+
 </Project>

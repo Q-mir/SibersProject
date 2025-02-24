@@ -4,6 +4,10 @@ namespace SibersProject.Model;
 
 public class EmployeeDTO
 {
+
+    [Display(Name = "ID:")]
+    public int EmployeeId { get; set; }
+
     [Display(Name = "Имя:")]
     [MinLength(3, ErrorMessage = "Имя мин 3 символа")]
     [MaxLength(20, ErrorMessage = "Имя макс 20 символов")]

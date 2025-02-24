@@ -1,0 +1,36 @@
+﻿@page
+@model SibersProject.Pages.Employee.EmployeesShowModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Сотрудники";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>MiddleName</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AllEmployees)
+        {
+            <tr>
+                <td>@item.EmployeeId</td>
+                <td>@item.Email</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.MiddleName</td>
+                <td><a class="btn btn-danger" asp-page="/client/update" asp-route-id="@item.EmployeeId">Update @item.FirstName</a></td>
+                <td><button class="btn btn-danger">Delete @item.FirstName</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

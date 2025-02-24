@@ -11,17 +11,11 @@ namespace SibersProject.Pages
         [BindProperty]
         public ProjectDTO ProjectInput { get; set; }
         private ICommandService<ProjectDTO> _save;
-        private readonly IRepository<ProjectDTO> _projectRepository; 
-        private readonly IRepository<EmployeeDTO> _employeeRepository;
         private ICollection<EmployeeDTO> _employees;
         public AddProjectModel(ICommandService<ProjectDTO> save, IRepository<ProjectDTO> projectRepository, IRepository<EmployeeDTO> employeeRepository)
         {
             ArgumentNullException.ThrowIfNull(save);
             _save = save;
-            ArgumentNullException.ThrowIfNull(projectRepository);
-            _projectRepository = projectRepository; 
-            ArgumentNullException.ThrowIfNull(employeeRepository);
-            _employeeRepository = employeeRepository; 
         }
         public IActionResult OnPost()
         {
@@ -35,7 +29,7 @@ namespace SibersProject.Pages
                     StartDate = ProjectInput.StartDate,
                     EndDate = ProjectInput.EndDate,
                     Priority = ProjectInput.Priority,
-                    ProjectManagerId = 0 // TODO
+                    ProjectManagerId = 1 // TODO
                 });
                 return RedirectToPage("/Index");
             }

@@ -12,26 +12,23 @@ namespace SibersProject.Pages.Employee
         [BindProperty]
         public EmployeeDTO EmployeeInput { get; set; }
         private ICommandService<EmployeeDTO> _save;
-        private readonly IRepository<ProjectDTO> _projectRepository;
-        private readonly IRepository<EmployeeDTO> _employeeRepository;
-        public AddEmployeeModel(ICommandService<EmployeeDTO> save,
-                                IRepository<ProjectDTO> projectRepository,
-                                IRepository<EmployeeDTO> employeeRepository)
+        public AddEmployeeModel(ICommandService<EmployeeDTO> save)
         {
             ArgumentNullException.ThrowIfNull(save);
             _save = save;
-            ArgumentNullException.ThrowIfNull(projectRepository);
-            _projectRepository = projectRepository;
-            ArgumentNullException.ThrowIfNull(employeeRepository);
-            _employeeRepository = employeeRepository;
         }
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                _save.Execute(new EmployeeDTO()
-                {
-                });
+                _save.Execute(new EmployeeDTO() 
+                { 
+                    FirstName = EmployeeInput.FirstName,
+                    LastName = EmployeeInput.LastName,
+                    MiddleName = EmployeeInput.MiddleName,
+                    Email = EmployeeInput.Email
+                }
+                );
                 return RedirectToPage("/Index");
             }
             return Page();
