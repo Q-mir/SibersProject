@@ -1,12 +1,5 @@
 ﻿using Domain.DTO.Project;
 using Domain.Repository;
-using SibersProject.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.WebPages;
 
 namespace Data
 {

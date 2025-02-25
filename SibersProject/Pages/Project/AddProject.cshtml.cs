@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services;
-using Domain.Repository;
-using SibersProject.Model;
 using Domain.DTO.Project;
 namespace SibersProject.Pages
 {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Commands
+namespace Domain.Commands.Employee
 {
     public class EmployeeUpdateCommand : ICommandService<EmployeeUpdateDTO>
     {

@@ -1,12 +1,13 @@
 using Data;
 using Domain.Repository;
-using Domain.Commands;
 using Microsoft.EntityFrameworkCore;
 using Services;
 using Domain.Queries;
 using Domain.DTO.Employee;
 using Domain.DTO.Project;
 using Domain.Queries.Employee;
+using Domain.Commands.Employee;
+using Domain.Commands.Project;
 
 var builder = WebApplication.CreateBuilder(args);
 

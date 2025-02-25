@@ -8,11 +8,31 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>MiddleName</th>
+            <th>
+                <a asp-page="./EmployeesShow" asp-route-sortColumn="EmployeeId" asp-route-sortDirection="@(Model.SortColumn == "EmployeeId" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    ID @(Model.SortColumn == "EmployeeId" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./EmployeesShow" asp-route-sortColumn="Email" asp-route-sortDirection="@(Model.SortColumn == "Email" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    Email @(Model.SortColumn == "Email" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./EmployeesShow" asp-route-sortColumn="FirstName" asp-route-sortDirection="@(Model.SortColumn == "FirstName" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    FirstName @(Model.SortColumn == "FirstName" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./EmployeesShow" asp-route-sortColumn="LastName" asp-route-sortDirection="@(Model.SortColumn == "LastName" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    LastName @(Model.SortColumn == "LastName" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./EmployeesShow" asp-route-sortColumn="MiddleName" asp-route-sortDirection="@(Model.SortColumn == "MiddleName" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    MiddleName @(Model.SortColumn == "MiddleName" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
             <th>Update</th>
             <th>Delete</th>
         </tr>
@@ -32,6 +52,3 @@
         }
     </tbody>
 </table>
-
-
-

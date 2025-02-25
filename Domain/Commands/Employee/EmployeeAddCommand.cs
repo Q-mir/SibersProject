@@ -3,7 +3,7 @@ using Domain.Repository;
 using Services;
 
 
-namespace Domain.Commands;
+namespace Domain.Commands.Employee;
 
 public class EmployeeAddCommand : ICommandService<EmployeeDTO>
 {
