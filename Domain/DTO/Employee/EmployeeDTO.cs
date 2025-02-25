@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
-namespace SibersProject.Model;
+namespace Domain.DTO.Employee;
 
 public class EmployeeDTO
 {
@@ -27,5 +26,7 @@ public class EmployeeDTO
     [MaxLength(100)]
     [EmailAddress]
     public string Email { get; set; } = null!;
+
+
 }
 

@@ -1,8 +1,8 @@
+using Domain.DTO.Employee;
 using Domain.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services;
-using SibersProject.Model;
 
 namespace SibersProject.Pages.Employee
 {

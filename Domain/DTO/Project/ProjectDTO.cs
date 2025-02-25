@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Domain.DTO;
+namespace Domain.DTO.Project;
 
 public class ProjectDTO
 {

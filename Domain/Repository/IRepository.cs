@@ -12,6 +12,10 @@ namespace Domain.Repository
         bool Check(string key);
         List<T> GetAll();
         T GetById(int id);
+        bool Update(T obj);
+        void Delete(T obj);
+
+
         //Task<IEnumerable<T>> GetAllAsync(); //TODO
     }
 }

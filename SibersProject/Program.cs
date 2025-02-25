@@ -1,11 +1,12 @@
 using Data;
-using Domain.DTO;
 using Domain.Repository;
 using Domain.Commands;
 using Microsoft.EntityFrameworkCore;
 using Services;
-using SibersProject.Model;
 using Domain.Queries;
+using Domain.DTO.Employee;
+using Domain.DTO.Project;
+using Domain.Queries.Employee;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,15 +19,18 @@ builder.Services.AddDbContext<Connection>(option => option.UseSqlServer(path));
 
 builder.Services.AddScoped <IRepository<EmployeeDTO>, RepositoryEmployee>();
 builder.Services.AddScoped <IRepository<ProjectDTO>, RepositoryProject>();
+
 builder.Services.AddScoped <ICommandService<EmployeeDTO>, EmployeeAddCommand>();
 builder.Services.AddScoped <ICommandService<ProjectDTO>, ProjectAddCommand>();
 
-builder.Services.AddScoped<IQueryService<All, IEnumerable<EmployeeDTO>>, GetAllEmployeesQuery>();
+builder.Services.AddScoped <IQueryService<All, IEnumerable<EmployeeDTO>>, GetAllEmployeesQueryService>();
+
+builder.Services.AddScoped <ICommandService<EmployeeUpdateDTO>, EmployeeUpdateCommand>();
+builder.Services.AddScoped <ICommandService<EmployeeDeleteDTO>, EmployeeDeleteCommand>();
+
+builder.Services.AddScoped <IQueryService<EmployeeSearchByIdDTO, EmployeeDTO>, GetByIdEmployeesQueryService>();
 
 var app = builder.Build();
-
-
-
 
 app.UseRouting();
 app.UseStaticFiles();

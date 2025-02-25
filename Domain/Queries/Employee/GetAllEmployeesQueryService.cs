@@ -1,19 +1,19 @@
-﻿using Domain.Repository;
+﻿using Domain.DTO.Employee;
+using Domain.Repository;
 using Services;
-using SibersProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Queries
+namespace Domain.Queries.Employee
 {
-    public class GetAllEmployeesQuery : IQueryService<All, IEnumerable<EmployeeDTO>>
+    public class GetAllEmployeesQueryService : IQueryService<All, IEnumerable<EmployeeDTO>>
     {
         private readonly IRepository<EmployeeDTO> _repository;
 
-        public GetAllEmployeesQuery(IRepository<EmployeeDTO> repository)
+        public GetAllEmployeesQueryService(IRepository<EmployeeDTO> repository)
         {
             ArgumentNullException.ThrowIfNull(repository);
             _repository = repository;

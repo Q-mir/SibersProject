@@ -5,10 +5,11 @@
     ViewData["Title"] = "Сотрудники";
 }
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>ID</th>
+            <th>Email</th>
             <th>FirstName</th>
             <th>LastName</th>
             <th>MiddleName</th>
@@ -25,8 +26,8 @@
                 <td>@item.FirstName</td>
                 <td>@item.LastName</td>
                 <td>@item.MiddleName</td>
-                <td><a class="btn btn-danger" asp-page="/client/update" asp-route-id="@item.EmployeeId">Update @item.FirstName</a></td>
-                <td><button class="btn btn-danger">Delete @item.FirstName</button></td>
+                <td><a class="btn btn-danger" asp-page="/Employee/UpdateEmployee" asp-route-id="@item.EmployeeId">Update @item.FirstName</a></td>
+                <td><a class="btn btn-danger" asp-page="/Employee/DeleteEmployee" asp-route-id="@item.EmployeeId">Delete @item.FirstName</a></td>
             </tr>
         }
     </tbody>

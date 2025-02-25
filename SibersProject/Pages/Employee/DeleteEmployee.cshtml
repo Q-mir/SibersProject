@@ -1,0 +1,13 @@
+﻿@page "{id:int}"
+@model SibersProject.Pages.Employee.DeleteEmployeeModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Удалить сотрудника";
+}
+    <div>Вы уверены что хотите удалить <b>@Model.EmployeeDelete.Email</b> ?</div>
+<form method="post">
+    <input type="hidden" asp-for="EmployeeDelete.EmployeeId" />
+
+    <input type="submit" value="Да" />
+    <input type="button" asp-page="/EmployeesShow" value="Нет" />
+</form>

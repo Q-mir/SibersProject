@@ -1,4 +1,4 @@
-﻿using Domain.DTO;
+﻿using Domain.DTO.Project;
 using Domain.Repository;
 using SibersProject.Model;
 using System;
@@ -58,5 +58,15 @@ namespace Data
                            Priority = obj.Priority,
                            ProjectManagerId = obj.ProjectManagerId
                        };
+
+        public bool Update(ProjectDTO obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(ProjectDTO obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

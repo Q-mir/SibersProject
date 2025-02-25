@@ -1,18 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Domain.DTO;
 using Services;
 using Domain.Repository;
 using SibersProject.Model;
+using Domain.DTO.Project;
 namespace SibersProject.Pages
 {
     public class AddProjectModel : PageModel
     {
         [BindProperty]
-        public ProjectDTO ProjectInput { get; set; }
-        private ICommandService<ProjectDTO> _save;
-        private ICollection<EmployeeDTO> _employees;
-        public AddProjectModel(ICommandService<ProjectDTO> save, IRepository<ProjectDTO> projectRepository, IRepository<EmployeeDTO> employeeRepository)
+        public ProjectDTO ProjectInput { get; set; } = null!;
+        private readonly ICommandService<ProjectDTO> _save;
+        public AddProjectModel(ICommandService<ProjectDTO> save)
         {
             ArgumentNullException.ThrowIfNull(save);
             _save = save;

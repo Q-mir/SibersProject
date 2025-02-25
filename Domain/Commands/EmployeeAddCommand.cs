@@ -1,6 +1,6 @@
-﻿using Domain.Repository;
+﻿using Domain.DTO.Employee;
+using Domain.Repository;
 using Services;
-using SibersProject.Model;
 
 
 namespace Domain.Commands;
@@ -21,11 +21,6 @@ public class EmployeeAddCommand : ICommandService<EmployeeDTO>
          || obj.FirstName.Length < 3
          || obj.LastName.Length < 3)
             return;
-
-        if (!_repository.Check(obj.Email))
-        {
-            _repository.Add(obj);
-        }
-        
+        _repository.Add(obj);
     }
 }

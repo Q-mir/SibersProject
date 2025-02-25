@@ -1,6 +1,6 @@
-﻿using Domain.Repository;
+﻿using Domain.DTO.Employee;
+using Domain.Repository;
 using Microsoft.EntityFrameworkCore.Migrations;
-using SibersProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +51,27 @@ namespace Data
             return employee == null ? null : Convert(employee);
         }
 
+        public bool Update(EmployeeDTO obj)
+        {
+            Employee employeeUpdate = new()
+            {
+                EmployeeId = obj.EmployeeId,
+                FirstName = obj.FirstName,
+                LastName = obj.LastName,
+                MiddleName = obj.MiddleName,
+                Email = obj.Email
+            };
+            _connection.Employees.Update(employeeUpdate);
+            return _connection.SaveChanges() > 0;
+        }
 
+        public void Delete(EmployeeDTO obj)
+        {
+            Employee employeeDelete = _connection.Employees.FirstOrDefault(e => e.EmployeeId == obj.EmployeeId);
+            if(employeeDelete != null)
+            {
+                _connection.Delete(employeeDelete);
+            }
+        }
     }
 }
