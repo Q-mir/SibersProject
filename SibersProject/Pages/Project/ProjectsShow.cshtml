@@ -1,0 +1,37 @@
+﻿@page
+@model SibersProject.Pages.Project.ProjectsShowModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Проекты";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ProjectName</th>
+            <th>CustomerCompany</th>
+            <th>ExecutorCompany</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+            <th>Priority</th>
+            <th>ProjectManagerId</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.AllProjects)
+        {
+            <tr>
+                <td>@item.ProjectId</td>
+                <td>@item.ProjectName</td>
+                <td>@item.CustomerCompany</td>
+                <td>@item.ExecutorCompany</td>
+                <td>@item.StartDate</td>
+                <td>@item.EndDate</td>
+                <td>@item.ProjectManagerId</td>
+                <td><a class="btn btn-danger" asp-page="/Project/UpdateProject" asp-route-id="@item.ProjectId">Update @item.ProjectName</a></td>
+                <td><a class="btn btn-danger" asp-page="/Project/DeleteProject" asp-route-id="@item.ProjectId">Delete @item.ProjectName</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>

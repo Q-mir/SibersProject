@@ -1,0 +1,20 @@
+﻿@page "{id:int}"
+@model SibersProject.Pages.Project.UpdateProjectModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Ред. проект";
+}
+<form asp-page="/project/updateproject" method="post">
+    <input type="hidden" asp-for="@Model.ProjectInput.ProjectId" />
+    <input readonly asp-for="@Model.ProjectInput.ProjectId" value="@Model.ProjectInput.ProjectId" />
+
+    <input asp-for="@Model.ProjectInput.ProjectName" value="@Model.ProjectInput.ProjectName" />
+    <input asp-for="@Model.ProjectInput.CustomerCompany" value="@Model.ProjectInput.CustomerCompany" />
+    <input asp-for="@Model.ProjectInput.StartDate" value="@Model.ProjectInput.StartDate" />
+    <input asp-for="@Model.ProjectInput.ExecutorCompany" value="@Model.ProjectInput.ExecutorCompany" />
+    <input asp-for="@Model.ProjectInput.Priority" value="@Model.ProjectInput.Priority" />
+    <input asp-for="@Model.ProjectInput.ProjectManagerId" value="@Model.ProjectInput.ProjectManagerId" />
+
+    <input type="submit" value="Обновить" />
+
+</form>

@@ -1,4 +1,5 @@
-﻿using Domain.DTO.Project;
+﻿using Domain.DTO.Employee;
+using Domain.DTO.Project;
 using Domain.Repository;
 
 namespace Data
@@ -54,12 +55,27 @@ namespace Data
 
         public bool Update(ProjectDTO obj)
         {
-            throw new NotImplementedException();
+            Project projectUpdate = new()
+            {
+                ProjectId = obj.ProjectId,
+                ProjectName = obj.ProjectName,
+                CustomerCompany = obj.CustomerCompany,
+                ExecutorCompany = obj.ExecutorCompany,
+                StartDate = obj.StartDate,
+                EndDate = obj.EndDate,
+                Priority = obj.Priority,
+            };
+            _connection.Projects.Update(projectUpdate);
+            return _connection.SaveChanges() > 0;
         }
 
         public void Delete(ProjectDTO obj)
         {
-            throw new NotImplementedException();
+            Project? projectDelete = _connection.Projects.FirstOrDefault(p => p.ProjectId == obj.ProjectId);
+            if (projectDelete != null)
+            {
+                _connection.Delete(projectDelete);
+            }
         }
     }
 }

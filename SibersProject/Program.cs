@@ -8,6 +8,7 @@ using Domain.DTO.Project;
 using Domain.Queries.Employee;
 using Domain.Commands.Employee;
 using Domain.Commands.Project;
+using Domain.Queries.Project;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,11 +26,14 @@ builder.Services.AddScoped <ICommandService<EmployeeDTO>, EmployeeAddCommand>();
 builder.Services.AddScoped <ICommandService<ProjectDTO>, ProjectAddCommand>();
 
 builder.Services.AddScoped <IQueryService<All, IEnumerable<EmployeeDTO>>, GetAllEmployeesQueryService>();
-
 builder.Services.AddScoped <ICommandService<EmployeeUpdateDTO>, EmployeeUpdateCommand>();
 builder.Services.AddScoped <ICommandService<EmployeeDeleteDTO>, EmployeeDeleteCommand>();
-
 builder.Services.AddScoped <IQueryService<EmployeeSearchByIdDTO, EmployeeDTO>, GetByIdEmployeesQueryService>();
+
+
+builder.Services.AddScoped <IQueryService<All, IEnumerable<ProjectDTO>>, GetAllProjectsQueryService>();
+builder.Services.AddScoped <IQueryService<ProjectSearchByIdDTO, ProjectDTO>, GetByIdProjectQueryService>();
+builder.Services.AddScoped <ICommandService<ProjectUpdateDTO>, ProjectUpdateCommand>();
 
 var app = builder.Build();
 

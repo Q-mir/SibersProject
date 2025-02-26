@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Service\Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\Project\" />
-  </ItemGroup>
-
 </Project>
