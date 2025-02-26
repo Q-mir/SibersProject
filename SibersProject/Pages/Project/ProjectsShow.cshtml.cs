@@ -17,29 +17,35 @@ namespace SibersProject.Pages.Project
             ArgumentNullException.ThrowIfNull(projectsAll);
             _projectsAll = projectsAll;
         }
+
+        [BindProperty]
+        public IEnumerable<ProjectDTO> AllProjects { get; set; }
+
         [BindProperty(SupportsGet = true)]
-        public string SortColumn { get; set; } = nameof(ProjectDTO.ProjectId);
+        public string SortColumn { get; set; } = nameof(ProjectDTO.ProjectId); 
 
         [BindProperty(SupportsGet = true)]
         public string SortDirection { get; set; } = "asc";
 
         [BindProperty(SupportsGet = true)]
-        public string SearchString { get; set; }
-
-        public IEnumerable<ProjectDTO> AllProjects { get; set; }
+        public string SearchString { get; set; } 
         public void OnGet()
         {
             var projects = _projectsAll.Execute(new All());
+
             if (!string.IsNullOrEmpty(SearchString))
             {
-                projects = projects.Where(e =>
-                    e.ProjectName.Contains(SearchString, StringComparison.OrdinalIgnoreCase) ||
-                    e.CustomerCompany.Contains(SearchString, StringComparison.OrdinalIgnoreCase));
+                projects = projects.Where(p =>
+                    p.ProjectName.Contains(SearchString, StringComparison.OrdinalIgnoreCase) ||
+                    p.CustomerCompany.Contains(SearchString, StringComparison.OrdinalIgnoreCase) ||
+                    p.ExecutorCompany.Contains(SearchString, StringComparison.OrdinalIgnoreCase));
             }
+
             AllProjects = projects.OrderBy(SortColumn, SortDirection);
         }
 
     }
+
     public static class EnumerableExtensions
     {
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> source, string columnName, string direction)
@@ -58,4 +64,5 @@ namespace SibersProject.Pages.Project
                 return source.OrderBy(x => property.GetValue(x, null));
         }
     }
+
 }

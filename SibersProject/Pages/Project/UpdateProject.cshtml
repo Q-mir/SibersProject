@@ -4,7 +4,7 @@
     Layout = "_Layout";
     ViewData["Title"] = "Ред. проект";
 }
-<form asp-page="/project/updateproject" method="post">
+<form asp-page="/Project/UpdateProject" method="post">
     <input type="hidden" asp-for="@Model.ProjectInput.ProjectId" />
     <input readonly asp-for="@Model.ProjectInput.ProjectId" value="@Model.ProjectInput.ProjectId" />
 

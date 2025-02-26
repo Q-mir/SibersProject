@@ -4,21 +4,56 @@
     Layout = "_Layout";
     ViewData["Title"] = "Проекты";
 }
+
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>ProjectName</th>
-            <th>CustomerCompany</th>
-            <th>ExecutorCompany</th>
-            <th>StartDate</th>
-            <th>EndDate</th>
-            <th>Priority</th>
-            <th>ProjectManagerId</th>
+            <th>
+                <a asp-page="./ProjectsShow" asp-route-sortColumn="ProjectId" asp-route-sortDirection="@(Model.SortColumn == "ProjectId" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    ID @(Model.SortColumn == "ProjectId" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./ProjectsShow" asp-route-sortColumn="ProjectName" asp-route-sortDirection="@(Model.SortColumn == "ProjectName" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    ProjectName @(Model.SortColumn == "ProjectName" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./ProjectsShow" asp-route-sortColumn="CustomerCompany" asp-route-sortDirection="@(Model.SortColumn == "CustomerCompany" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    CustomerCompany @(Model.SortColumn == "CustomerCompany" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./ProjectsShow" asp-route-sortColumn="ExecutorCompany" asp-route-sortDirection="@(Model.SortColumn == "ExecutorCompany" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    ExecutorCompany @(Model.SortColumn == "ExecutorCompany" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./ProjectsShow" asp-route-sortColumn="StartDate" asp-route-sortDirection="@(Model.SortColumn == "StartDate" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    StartDate @(Model.SortColumn == "StartDate" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./ProjectsShow" asp-route-sortColumn="EndDate" asp-route-sortDirection="@(Model.SortColumn == "EndDate" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    EndDate @(Model.SortColumn == "EndDate" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./ProjectsShow" asp-route-sortColumn="Priority" asp-route-sortDirection="@(Model.SortColumn == "Priority" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    Priority @(Model.SortColumn == "Priority" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>
+                <a asp-page="./ProjectsShow" asp-route-sortColumn="ProjectManagerId" asp-route-sortDirection="@(Model.SortColumn == "ProjectManagerId" && Model.SortDirection == "asc" ? "desc" : "asc")">
+                    ProjectManagerId @(Model.SortColumn == "ProjectManagerId" ? (Model.SortDirection == "asc" ? "▲" : "▼") : "")
+                </a>
+            </th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model.AllProjects)
+        @foreach (var item in Model.AllProjects)
         {
             <tr>
                 <td>@item.ProjectId</td>
@@ -27,10 +62,10 @@
                 <td>@item.ExecutorCompany</td>
                 <td>@item.StartDate</td>
                 <td>@item.EndDate</td>
+                <td>@item.Priority</td>
                 <td>@item.ProjectManagerId</td>
                 <td><a class="btn btn-danger" asp-page="/Project/UpdateProject" asp-route-id="@item.ProjectId">Update @item.ProjectName</a></td>
                 <td><a class="btn btn-danger" asp-page="/Project/DeleteProject" asp-route-id="@item.ProjectId">Delete @item.ProjectName</a></td>
-
             </tr>
         }
     </tbody>

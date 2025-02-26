@@ -18,8 +18,10 @@ namespace SibersProject.Pages.Project
             _query = query;
             _command = command;
         }
-        public ProjectUpdateDTO ProjectInput { get; set; }
-        public void OnGet(int id)
+
+        [BindProperty]
+        public ProjectUpdateDTO ProjectInput { get; set; } = new();
+        public IActionResult OnGet(int id)
         {
             ProjectDTO projectUpdate = _query.Execute(new ProjectSearchByIdDTO() { Id = id });
             if(projectUpdate != null)
@@ -35,10 +37,15 @@ namespace SibersProject.Pages.Project
                     ProjectManagerId = projectUpdate.ProjectManagerId,
                     ProjectName = projectUpdate.ProjectName
                 };
+                return Page();
+            }
+            else
+            {
+                return NotFound();
             }
         }
 
-        public IActionResult Onpost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid) return Page();
 

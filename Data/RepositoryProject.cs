@@ -44,6 +44,7 @@ namespace Data
         private static ProjectDTO? Convert(Project obj)
                        => obj == null ? null : new ProjectDTO()
                        {
+                           ProjectId = obj.ProjectId,
                            ProjectName = obj.ProjectName,
                            CustomerCompany = obj.CustomerCompany,
                            ExecutorCompany = obj.ExecutorCompany,

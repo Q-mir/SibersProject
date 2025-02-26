@@ -5,14 +5,31 @@
     ViewData["Title"] = "Ред. сотрудника";
 }
 
- <form asp-page="/employee/updateemployee" method="post">
+ <form class="form-check" asp-page="/employee/updateemployee" method="post">
     <input type="hidden" asp-for="@Model.EmployeeInput.EmployeeId" />
-    <input readonly asp-for="@Model.EmployeeInput.Email" value="@Model.EmployeeInput.Email" />
-    <input asp-for="@Model.EmployeeInput.FirstName" value="@Model.EmployeeInput.FirstName" />
-    <input asp-for="@Model.EmployeeInput.LastName" value="@Model.EmployeeInput.LastName" />
-    <input asp-for="@Model.EmployeeInput.MiddleName" value="@Model.EmployeeInput.MiddleName" />
-
+<div class="container">
+    <div class="row">
+        <span asp-validation-for="@Model.EmployeeInput.Email"></span>
+        <label asp-for="@Model.EmployeeInput.Email"></label>
+        <input readonly asp-for="@Model.EmployeeInput.Email" value="@Model.EmployeeInput.Email">
+    </div>
+    <div class="row">
+        <span asp-validation-for="@Model.EmployeeInput.FirstName"></span>
+        <label asp-for="@Model.EmployeeInput.FirstName"></label>
+        <input asp-for="@Model.EmployeeInput.FirstName" value="@Model.EmployeeInput.FirstName">
+    </div>
+    <div class="row">
+        <span asp-validation-for="@Model.EmployeeInput.LastName"></span>
+        <label asp-for="@Model.EmployeeInput.LastName"></label>
+        <input asp-for="@Model.EmployeeInput.LastName" value="@Model.EmployeeInput.LastName">
+    </div>
+    <div class="row">
+        <span asp-validation-for="@Model.EmployeeInput.MiddleName"></span>
+        <label asp-for="@Model.EmployeeInput.MiddleName"></label>
+        <input asp-for="@Model.EmployeeInput.MiddleName" value="@Model.EmployeeInput.MiddleName">
+    </div>
     <input type="submit" value="Обновить" /> 
+</div>
     
 </form>
 
