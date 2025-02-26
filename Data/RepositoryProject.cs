@@ -16,19 +16,20 @@ namespace Data
 
         public void Add(ProjectDTO obj)
         {
-            
-            _connection.Projects.Add(new Project()
+            if (!Check(obj.ProjectName))
             {
-                ProjectName = obj.ProjectName,
-                CustomerCompany = obj.CustomerCompany,
-                ExecutorCompany = obj.ExecutorCompany,
-                StartDate = obj.StartDate,
-                EndDate = obj.EndDate,
-                Priority = obj.Priority,
-                ProjectManagerId = obj.ProjectManagerId
-            });
-            _connection.SaveChanges();
-            
+                _connection.Projects.Add(new Project()
+                {
+                    ProjectName = obj.ProjectName,
+                    CustomerCompany = obj.CustomerCompany,
+                    ExecutorCompany = obj.ExecutorCompany,
+                    StartDate = obj.StartDate,
+                    EndDate = obj.EndDate,
+                    Priority = obj.Priority,
+                    ProjectManagerId = obj.ProjectManagerId
+                });
+                _connection.SaveChanges();
+            }
         }
 
         public bool Check(string key) => _connection.Projects.Any(p => p.ProjectName == key);
@@ -65,6 +66,7 @@ namespace Data
                 StartDate = obj.StartDate,
                 EndDate = obj.EndDate,
                 Priority = obj.Priority,
+                ProjectManagerId = obj.ProjectManagerId
             };
             _connection.Projects.Update(projectUpdate);
             return _connection.SaveChanges() > 0;

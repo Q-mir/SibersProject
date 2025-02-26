@@ -34,7 +34,7 @@
     <div>
         <span asp-validation-for="@Model.ProjectInput.Priority"></span>
         <label asp-for="@Model.ProjectInput.Priority"></label>
-        <input asp-for="@Model.ProjectInput.Priority" />
+        <input min="1" max="5" asp-for="@Model.ProjectInput.Priority" />
     </div>
     <div>
         <span asp-validation-for="@Model.ProjectInput.ProjectManagerId"></span>

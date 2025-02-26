@@ -21,10 +21,11 @@ namespace SibersProject.Pages.Project
 
         [BindProperty]
         public ProjectUpdateDTO ProjectInput { get; set; } = new();
+
         public IActionResult OnGet(int id)
         {
             ProjectDTO projectUpdate = _query.Execute(new ProjectSearchByIdDTO() { Id = id });
-            if(projectUpdate != null)
+            if (projectUpdate != null)
             {
                 ProjectInput = new()
                 {

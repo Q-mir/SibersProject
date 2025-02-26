@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services;
 using Domain.DTO.Project;
+using Domain.DTO.Employee;
 namespace SibersProject.Pages
 {
     public class AddProjectModel : PageModel
@@ -33,7 +34,8 @@ namespace SibersProject.Pages
             return Page();
         }
 
-        
+        [BindProperty]
+        public IEnumerable<EmployeeDTO> Employees { get; set; }
 
         public void OnGet()
         {
