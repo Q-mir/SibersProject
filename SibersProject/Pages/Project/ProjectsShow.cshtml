@@ -63,7 +63,7 @@
                 <td>@item.StartDate</td>
                 <td>@item.EndDate</td>
                 <td>@item.Priority</td>
-                <td>@item.ProjectManagerId</td>
+                <td>@Model.GetManagerFullName(item.ProjectManagerId)</td>
                 <td><a class="btn btn-danger" asp-page="/Project/UpdateProject" asp-route-id="@item.ProjectId">Update @item.ProjectName</a></td>
                 <td><a class="btn btn-danger" asp-page="/Project/DeleteProject" asp-route-id="@item.ProjectId">Delete @item.ProjectName</a></td>
             </tr>

@@ -34,6 +34,7 @@ public class ProjectDTO
     public int Priority { get; set; }
 
 
+    [Display(Name = "Руководитель проекта:")]
     public int ProjectManagerId { get; set; }
 
 }

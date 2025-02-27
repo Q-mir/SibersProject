@@ -1,46 +1,50 @@
-﻿@page 
+﻿@page "/AddProject"
 @model SibersProject.Pages.AddProjectModel
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Добавление проекта"; 
+    ViewData["Title"] = "Добавление проекта";
 }
 
-<form method="post" asp-page="/project/addproject">
-     <div>
-        <span asp-validation-for="@Model.ProjectInput.ProjectName"></span>
-        <label asp-for="@Model.ProjectInput.ProjectName"></label>
-        <input asp-for="@Model.ProjectInput.ProjectName">
-    </div>
-    <div>
-        <span asp-validation-for="@Model.ProjectInput.CustomerCompany"></span>
-        <label asp-for="@Model.ProjectInput.CustomerCompany"></label>
-        <input asp-for="@Model.ProjectInput.CustomerCompany">
-    </div>
-    <div>
-        <span asp-validation-for="@Model.ProjectInput.ExecutorCompany"></span>
-        <label asp-for="@Model.ProjectInput.ExecutorCompany"></label>
-        <input asp-for="@Model.ProjectInput.ExecutorCompany">
-    </div>
-    <div>
-        <span asp-validation-for="@Model.ProjectInput.StartDate"></span>
-        <label asp-for="@Model.ProjectInput.StartDate"></label>
-        <input asp-for="@Model.ProjectInput.StartDate" />
-    </div>
-    <div>
-        <span asp-validation-for="@Model.ProjectInput.EndDate"></span>
-        <label asp-for="@Model.ProjectInput.EndDate"></label>
-        <input asp-for="@Model.ProjectInput.EndDate" />
-    </div>
-    <div>
-        <span asp-validation-for="@Model.ProjectInput.Priority"></span>
-        <label asp-for="@Model.ProjectInput.Priority"></label>
-        <input min="1" max="5" asp-for="@Model.ProjectInput.Priority" />
-    </div>
-    <div>
-        <span asp-validation-for="@Model.ProjectInput.ProjectManagerId"></span>
-        <label asp-for="@Model.ProjectInput.ProjectManagerId"></label>
-        <input asp-for="@Model.ProjectInput.ProjectManagerId" />
+<form method="post">
+    <div class="form-group">
+        <label asp-for="ProjectInput.ProjectName"></label>
+        <input asp-for="ProjectInput.ProjectName" class="form-control" />
     </div>
 
-    <input type="submit" value="Добавить" /> 
+    <div class="form-group">
+        <label asp-for="ProjectInput.CustomerCompany"></label>
+        <input asp-for="ProjectInput.CustomerCompany" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProjectInput.ExecutorCompany"></label>
+        <input asp-for="ProjectInput.ExecutorCompany" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProjectInput.StartDate"></label>
+        <input asp-for="ProjectInput.StartDate" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProjectInput.EndDate"></label>
+        <input asp-for="ProjectInput.EndDate" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProjectInput.Priority"></label>
+        <input asp-for="ProjectInput.Priority" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProjectInput.ProjectManagerId"></label>
+        <select asp-for="ProjectInput.ProjectManagerId" asp-items="@Model.SelectEmloyees" class="form-control">
+            <option value="">Выберите руководителя</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавить</button>
 </form>
+
+
+

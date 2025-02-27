@@ -5,51 +5,57 @@
     ViewData["Title"] = "Обновление проекта";
 }
 
-<form method="post">
-    <div class="form-group">
-        <label asp-for="ProjectInput.ProjectName"></label>
-        <input asp-for="ProjectInput.ProjectName" class="form-control" />
+<form class="form-check" method="post">
+    <input type="hidden" asp-for="@Model.ProjectInput.ProjectId" />
+
+    <div class="row">
+        <span asp-validation-for="@Model.ProjectInput.ProjectName"></span>
+        <label asp-for="@Model.ProjectInput.ProjectName"></label>
+        <input asp-for="@Model.ProjectInput.ProjectName" value="@Model.ProjectInput.ProjectName" class="form-control" />
     </div>
 
-    <div class="form-group">
-        <label asp-for="ProjectInput.ProjectManagerId"></label>
-        <select id="leaderDropdown" asp-for="ProjectInput.ProjectManagerId" class="form-control">
+    <div class="row">
+        <span asp-validation-for="@Model.ProjectInput.CustomerCompany"></span>
+        <label asp-for="@Model.ProjectInput.CustomerCompany"></label>
+        <input asp-for="@Model.ProjectInput.CustomerCompany" value="@Model.ProjectInput.CustomerCompany" class="form-control" />
+    </div>
+
+    <div class="row">
+        <span asp-validation-for="@Model.ProjectInput.ExecutorCompany"></span>
+        <label asp-for="@Model.ProjectInput.ExecutorCompany"></label>
+        <input asp-for="@Model.ProjectInput.ExecutorCompany" value="@Model.ProjectInput.ExecutorCompany" class="form-control" />
+    </div>
+
+    <div class="row">
+        <span asp-validation-for="@Model.ProjectInput.StartDate"></span>
+        <label asp-for="@Model.ProjectInput.StartDate"></label>
+        <input type="datetime" asp-for="@Model.ProjectInput.StartDate" value="@Model.ProjectInput.StartDate" class="form-control" />
+    </div>
+
+    <div class="row">
+        <span asp-validation-for="@Model.ProjectInput.EndDate"></span>
+        <label asp-for="@Model.ProjectInput.EndDate"></label>
+        <input type="datetime" asp-for="@Model.ProjectInput.EndDate" value="@Model.ProjectInput.EndDate" class="form-control" />
+    </div>
+
+    <div class="row">
+        <span asp-validation-for="@Model.ProjectInput.Priority"></span>
+        <label asp-for="@Model.ProjectInput.Priority"></label>
+        <input asp-for="@Model.ProjectInput.Priority" value="@Model.ProjectInput.Priority" class="form-control" />
+    </div>
+
+    <div class="row">
+        <label asp-for="@Model.ProjectInput.ProjectManagerId"></label>
+        <select asp-for="@Model.ProjectInput.ProjectManagerId" class="form-control">
             <option value="">Выберите руководителя</option>
+            @foreach (var manager in Model.Managers)
+            {
+                <option value="@manager.EmployeeId">@manager.FirstName @manager.LastName</option>
+            }
         </select>
     </div>
 
-    <div class="form-group">
-        <label asp-for="ProjectInput.ExecutorCompany"></label>
-        <select id="executorDropdown" asp-for="ProjectInput.ExecutorCompany" class="form-control">
-            <option value="">Выберите исполнителя</option>
-        </select>
-    </div>
 
-    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <button type="submit" class="btn btn-primary mt-2">Сохранить</button>
 </form>
 
-@section Scripts {
-    <script>
-        $(document).ready(function() {
-            $('#leaderDropdown, #executorDropdown').select2({
-                ajax: {
-                    url: '/Employee/SearchEmployees',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function(params) {
-                        return {
-                            search: params.term
-                        };
-                    },
-                    processResults: function(data) {
-                        return {
-                            results: data
-                        };
-                    },
-                    cache: true
-                },
-                minimumInputLength: 2
-            });
-        });
-    </script>
-}

@@ -35,6 +35,8 @@ builder.Services.AddScoped <IQueryService<All, IEnumerable<ProjectDTO>>, GetAllP
 builder.Services.AddScoped <IQueryService<ProjectSearchByIdDTO, ProjectDTO>, GetByIdProjectQueryService>();
 builder.Services.AddScoped <ICommandService<ProjectUpdateDTO>, ProjectUpdateCommand>();
 
+builder.Services.AddScoped <IQueryService<EmployeeSearchDTO, IEnumerable<EmployeeDTO>>, EmployeeQueryService>();
+
 var app = builder.Build();
 
 app.UseRouting();

@@ -11,15 +11,20 @@ namespace SibersProject.Pages.Project
     public class ProjectsShowModel : PageModel
     {
         private readonly IQueryService<All, IEnumerable<ProjectDTO>> _projectsAll;
-
-        public ProjectsShowModel(IQueryService<All, IEnumerable<ProjectDTO>> projectsAll)
+        private readonly IQueryService<EmployeeSearchByIdDTO, EmployeeDTO> _employeeQuery;
+        public ProjectsShowModel(IQueryService<All, IEnumerable<ProjectDTO>> projectsAll,
+                                 IQueryService<EmployeeSearchByIdDTO, EmployeeDTO> employeeQuery)
         {
             ArgumentNullException.ThrowIfNull(projectsAll);
+            ArgumentNullException.ThrowIfNull(employeeQuery);
             _projectsAll = projectsAll;
+            _employeeQuery = employeeQuery;
         }
 
         [BindProperty]
         public IEnumerable<ProjectDTO> AllProjects { get; set; }
+
+        
 
         [BindProperty(SupportsGet = true)]
         public string SortColumn { get; set; } = nameof(ProjectDTO.ProjectId); 
@@ -43,8 +48,19 @@ namespace SibersProject.Pages.Project
 
             AllProjects = projects.OrderBy(SortColumn, SortDirection);
         }
+        public string GetManagerFullName(int? managerId)
+        {
+            if (managerId == null)
+            {
+                return "Не назначен";
+            }
 
+            var manager = _employeeQuery.Execute(new EmployeeSearchByIdDTO { Id = managerId.Value });
+            return manager != null ? $"{manager.FirstName} {manager.LastName}" : "Неизвестный сотрудник";
+        }
     }
+
+
 
     public static class EnumerableExtensions
     {
