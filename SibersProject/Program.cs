@@ -37,6 +37,9 @@ builder.Services.AddScoped <ICommandService<ProjectUpdateDTO>, ProjectUpdateComm
 
 builder.Services.AddScoped <IQueryService<EmployeeSearchDTO, IEnumerable<EmployeeDTO>>, EmployeeQueryService>();
 
+
+builder.Services.AddScoped <ICommandService<ProjectDeleteDTO>, ProjectDeleteCommand>();
+
 var app = builder.Build();
 
 app.UseRouting();

@@ -34,7 +34,7 @@ namespace SibersProject.Pages.Employee
             _command.Execute(new EmployeeDeleteDTO() { EmployeeId = id });
 
 
-            return RedirectToPage("EmployeesShow");
+            return RedirectToPage("/EmployeesShow");
         }
 
 
